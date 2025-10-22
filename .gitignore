@@ -5,6 +5,7 @@ node_modules
 out
 dist
 *.tgz
+worktree-manager
 
 # code coverage
 coverage

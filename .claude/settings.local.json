@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(find /Users/duncan/dev/worktrees-manager/src -type f ( -name \"*.css\" -o -name \"*.scss\" ))"
     ],
     "deny": [],
     "ask": []

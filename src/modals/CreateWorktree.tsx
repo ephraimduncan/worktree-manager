@@ -78,22 +78,22 @@ export function CreateWorktree({
     switch (status) {
       case "input":
         return (
-          <box style={{ flexDirection: "column", gap: 1 }}>
+          <box style={{ flexDirection: "column", gap: 0.5 }}>
             <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
               Create New Worktree
             </text>
 
-            <text style={{ marginTop: 1 }}>Enter branch name:</text>
+            <text style={{ marginTop: 0.5 }}>Enter branch name:</text>
             <input
               focused
               placeholder="e.g., feat/add-editor, bugfix/login-issue"
               onInput={setBranchName}
               onSubmit={handleSubmit}
-              style={{ marginTop: 1 }}
+              style={{ marginTop: 0.5 }}
             />
 
             {error && (
-              <text fg={COLORS.error} style={{ marginTop: 1 }}>
+              <text fg={COLORS.error} style={{ marginTop: 0.5 }}>
                 {error}
               </text>
             )}
@@ -102,7 +102,7 @@ export function CreateWorktree({
               <box
                 style={{
                   flexDirection: "column",
-                  marginTop: 2,
+                  marginTop: 1,
                   padding: 1,
                   borderStyle: "rounded",
                 }}
@@ -110,7 +110,7 @@ export function CreateWorktree({
                 <text fg={COLORS.dim} style={{ fontWeight: "bold" }}>
                   Preview:
                 </text>
-                <box style={{ flexDirection: "row", marginTop: 1 }}>
+                <box style={{ flexDirection: "row", marginTop: 0.5 }}>
                   <text fg={COLORS.label}>Branch: </text>
                   <text fg={COLORS.branch}>{fullBranchName}</text>
                 </box>
@@ -125,7 +125,7 @@ export function CreateWorktree({
               </box>
             )}
 
-            <text fg={COLORS.dim} style={{ marginTop: 1 }}>
+            <text fg={COLORS.dim} style={{ marginTop: 0.5 }}>
               Press Enter to create, Esc to cancel
             </text>
           </box>
@@ -133,19 +133,19 @@ export function CreateWorktree({
 
       case "creating":
         return (
-          <box style={{ flexDirection: "column", alignItems: "center", gap: 1 }}>
+          <box style={{ flexDirection: "column", alignItems: "center", gap: 0.5 }}>
             <text fg={COLORS.highlight}>Creating worktree...</text>
           </box>
         );
 
       case "error":
         return (
-          <box style={{ flexDirection: "column", gap: 1 }}>
+          <box style={{ flexDirection: "column", gap: 0.5 }}>
             <text fg={COLORS.error} style={{ fontWeight: "bold" }}>
               Error
             </text>
             <text>{error}</text>
-            <text fg={COLORS.dim} style={{ marginTop: 1 }}>
+            <text fg={COLORS.dim} style={{ marginTop: 0.5 }}>
               Press Esc to close
             </text>
           </box>
@@ -160,9 +160,9 @@ export function CreateWorktree({
     <box
       style={{
         position: "absolute",
-        left: "10%",
+        left: "30%",
         top: "20%",
-        width: "80%",
+        width: "40%",
         height: "auto",
       }}
     >
@@ -171,7 +171,7 @@ export function CreateWorktree({
         borderStyle="rounded"
         style={{
           backgroundColor: "black",
-          padding: 2,
+          padding: 0.5,
           flexDirection: "column",
         }}
       >

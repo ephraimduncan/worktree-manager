@@ -70,7 +70,7 @@ export function DetailsPanel({ worktree }: DetailsPanelProps) {
 
       {worktree.status && (
         <>
-          <box style={{ flexDirection: "column", marginTop: 1 }}>
+          <box style={{ flexDirection: "column" }}>
             <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
               Status:
             </text>
@@ -110,7 +110,7 @@ export function DetailsPanel({ worktree }: DetailsPanelProps) {
       )}
 
       {worktree.branchInfo && (
-        <box style={{ flexDirection: "column", marginTop: 1 }}>
+        <box style={{ flexDirection: "column" }}>
           <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
             Last Commit:
           </text>

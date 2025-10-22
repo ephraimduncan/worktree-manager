@@ -60,9 +60,9 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 		<box
 			style={{
 				position: "absolute",
-				left: "10%",
+				left: "30%",
 				top: "15%",
-				width: "80%",
+				width: "40%",
 				height: "auto",
 			}}
 		>
@@ -71,16 +71,16 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 				borderStyle="rounded"
 				style={{
 					backgroundColor: "black",
-					padding: 2,
+					padding: 0.5,
 					flexDirection: "column",
-					gap: 1,
+					gap: 0.5,
 				}}
 			>
 				<text fg={COLORS.label} style={{ fontWeight: "bold" }}>
 					Configuration
 				</text>
 
-				<box style={{ flexDirection: "column", marginTop: 1 }}>
+				<box style={{ flexDirection: "column", marginTop: 0.5 }}>
 					<text
 						fg={focusedField === "projectsDir" ? COLORS.highlight : COLORS.label}
 						style={{ fontWeight: "bold" }}
@@ -96,7 +96,7 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 							placeholder="Enter new path..."
 							onInput={setInputValue}
 							onSubmit={() => handleFieldSubmit("projectsDir")}
-							style={{ marginTop: 1 }}
+							style={{ marginTop: 0.5 }}
 						/>
 					)}
 				</box>
@@ -117,7 +117,7 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 							placeholder="Enter new path..."
 							onInput={setInputValue}
 							onSubmit={() => handleFieldSubmit("worktreesDir")}
-							style={{ marginTop: 1 }}
+							style={{ marginTop: 0.5 }}
 						/>
 					)}
 				</box>
@@ -142,17 +142,17 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 							placeholder="e.g., username, feature, etc."
 							onInput={setInputValue}
 							onSubmit={() => handleFieldSubmit("defaultBranchPrefix")}
-							style={{ marginTop: 1 }}
+							style={{ marginTop: 0.5 }}
 						/>
 					)}
 				</box>
 
 				{isSaving ? (
-					<text fg={COLORS.highlight} style={{ marginTop: 2 }}>
+					<text fg={COLORS.highlight} style={{ marginTop: 1 }}>
 						Saving...
 					</text>
 				) : (
-					<box style={{ flexDirection: "column", marginTop: 2, gap: 1 }}>
+					<box style={{ flexDirection: "column", marginTop: 1, gap: 0.5 }}>
 						<text fg={COLORS.highlight}>[Tab] Switch field</text>
 						<text fg={COLORS.success}>[Ctrl+S] Save changes</text>
 						<text fg={COLORS.error}>[Esc] Close without saving</text>

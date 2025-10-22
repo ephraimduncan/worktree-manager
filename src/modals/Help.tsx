@@ -16,9 +16,9 @@ export function Help({ onClose }: HelpProps) {
     <box
       style={{
         position: "absolute",
-        left: "15%",
+        left: "30%",
         top: "15%",
-        width: "70%",
+        width: "40%",
         height: "auto",
       }}
     >
@@ -27,9 +27,9 @@ export function Help({ onClose }: HelpProps) {
         borderStyle="rounded"
         style={{
           backgroundColor: "black",
-          padding: 2,
+          padding: 0.5,
           flexDirection: "column",
-          gap: 1,
+          gap: 0.5,
         }}
       >
         <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
@@ -46,7 +46,7 @@ export function Help({ onClose }: HelpProps) {
           <text> - Print selected worktree path and exit</text>
         </box>
 
-        <text fg={COLORS.label} style={{ fontWeight: "bold", marginTop: 1 }}>
+        <text fg={COLORS.label} style={{ fontWeight: "bold", marginTop: 0.5 }}>
           Actions
         </text>
         <box style={{ flexDirection: "row", marginLeft: 2 }}>
@@ -66,7 +66,7 @@ export function Help({ onClose }: HelpProps) {
           <text> - Refresh worktree list</text>
         </box>
 
-        <text fg={COLORS.label} style={{ fontWeight: "bold", marginTop: 1 }}>
+        <text fg={COLORS.label} style={{ fontWeight: "bold", marginTop: 0.5 }}>
           Other
         </text>
         <box style={{ flexDirection: "row", marginLeft: 2 }}>
@@ -80,7 +80,7 @@ export function Help({ onClose }: HelpProps) {
           <text> - Quit application</text>
         </box>
 
-        <text fg={COLORS.dim} style={{ marginTop: 2 }}>
+        <text fg={COLORS.dim} style={{ marginTop: 1 }}>
           Press Esc or ? to close
         </text>
       </box>

@@ -66,18 +66,18 @@ export function ConfirmClean({
     switch (state) {
       case "confirm":
         return (
-          <box style={{ flexDirection: "column", gap: 1 }}>
+          <box style={{ flexDirection: "column", gap: 0.5 }}>
             <text fg={COLORS.warning} style={{ fontWeight: "bold" }}>
               ⚠ Clean All Worktrees
             </text>
 
-            <box style={{ flexDirection: "row", marginTop: 1 }}>
+            <box style={{ flexDirection: "row", marginTop: 0.5 }}>
               <text>This will delete </text>
               <text fg={COLORS.error}>{nonMainWorktrees.length}</text>
               <text> worktree{nonMainWorktrees.length !== 1 ? "s" : ""}:</text>
             </box>
 
-            <box style={{ flexDirection: "column", marginTop: 1, maxHeight: 10 }}>
+            <box style={{ flexDirection: "column", marginTop: 0.5, maxHeight: 10 }}>
               {nonMainWorktrees.slice(0, 5).map((wt) => (
                 <text key={wt.path} fg={COLORS.dim} style={{ marginLeft: 2 }}>
                   • {wt.name} ({wt.branch})
@@ -90,7 +90,7 @@ export function ConfirmClean({
               )}
             </box>
 
-            <box style={{ flexDirection: "column", marginTop: 2, gap: 1 }}>
+            <box style={{ flexDirection: "column", marginTop: 1, gap: 0.5 }}>
               <text fg={COLORS.highlight}>[y] Yes, delete all worktrees</text>
               <text fg={COLORS.error}>[Esc] Cancel</text>
             </box>
@@ -99,7 +99,7 @@ export function ConfirmClean({
 
       case "cleaning":
         return (
-          <box style={{ flexDirection: "column", alignItems: "center", gap: 1 }}>
+          <box style={{ flexDirection: "column", alignItems: "center", gap: 0.5 }}>
             <text fg={COLORS.highlight}>Cleaning worktrees...</text>
             <text>
               Deleted: {deleted} / {nonMainWorktrees.length}
@@ -109,14 +109,14 @@ export function ConfirmClean({
 
       case "complete":
         return (
-          <box style={{ flexDirection: "column", gap: 1 }}>
+          <box style={{ flexDirection: "column", gap: 0.5 }}>
             <text fg={COLORS.success} style={{ fontWeight: "bold" }}>
               ✓ Success
             </text>
             <text>
               Deleted {deleted} worktree{deleted !== 1 ? "s" : ""}
             </text>
-            <text fg={COLORS.dim} style={{ marginTop: 1 }}>
+            <text fg={COLORS.dim} style={{ marginTop: 0.5 }}>
               Press Enter to continue
             </text>
           </box>
@@ -124,12 +124,12 @@ export function ConfirmClean({
 
       case "error":
         return (
-          <box style={{ flexDirection: "column", gap: 1 }}>
+          <box style={{ flexDirection: "column", gap: 0.5 }}>
             <text fg={COLORS.error} style={{ fontWeight: "bold" }}>
               Error
             </text>
             <text>{error}</text>
-            <text fg={COLORS.dim} style={{ marginTop: 1 }}>
+            <text fg={COLORS.dim} style={{ marginTop: 0.5 }}>
               Press Esc to close
             </text>
           </box>
@@ -144,9 +144,9 @@ export function ConfirmClean({
     <box
       style={{
         position: "absolute",
-        left: "20%",
+        left: "30%",
         top: "25%",
-        width: "60%",
+        width: "40%",
         height: "auto",
       }}
     >
@@ -155,7 +155,7 @@ export function ConfirmClean({
         borderStyle="rounded"
         style={{
           backgroundColor: "black",
-          padding: 2,
+          padding: 0.5,
           flexDirection: "column",
         }}
       >

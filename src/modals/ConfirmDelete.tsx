@@ -55,12 +55,12 @@ export function ConfirmDelete({
     switch (state) {
       case "confirm":
         return (
-          <box style={{ flexDirection: "column", gap: 1 }}>
+          <box style={{ flexDirection: "column", gap: 0.5 }}>
             <text fg={COLORS.warning} style={{ fontWeight: "bold" }}>
               ⚠ Delete Worktree
             </text>
 
-            <box style={{ flexDirection: "column", marginTop: 1 }}>
+            <box style={{ flexDirection: "column", marginTop: 0.5 }}>
               <box style={{ flexDirection: "row" }}>
                 <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
                   Name:{" "}
@@ -82,12 +82,12 @@ export function ConfirmDelete({
             </box>
 
             {worktree.isMain && (
-              <text fg={COLORS.error} style={{ marginTop: 1 }}>
+              <text fg={COLORS.error} style={{ marginTop: 0.5 }}>
                 ⚠ Warning: This is the main repository!
               </text>
             )}
 
-            <box style={{ flexDirection: "column", marginTop: 2, gap: 1 }}>
+            <box style={{ flexDirection: "column", marginTop: 1, gap: 0.5 }}>
               <text fg={COLORS.highlight}>
                 [y] Yes, delete this worktree
               </text>
@@ -101,19 +101,19 @@ export function ConfirmDelete({
 
       case "deleting":
         return (
-          <box style={{ flexDirection: "column", alignItems: "center", gap: 1 }}>
+          <box style={{ flexDirection: "column", alignItems: "center", gap: 0.5 }}>
             <text fg={COLORS.highlight}>Deleting worktree...</text>
           </box>
         );
 
       case "error":
         return (
-          <box style={{ flexDirection: "column", gap: 1 }}>
+          <box style={{ flexDirection: "column", gap: 0.5 }}>
             <text fg={COLORS.error} style={{ fontWeight: "bold" }}>
               Error
             </text>
             <text>{error}</text>
-            <text fg={COLORS.dim} style={{ marginTop: 1 }}>
+            <text fg={COLORS.dim} style={{ marginTop: 0.5 }}>
               Press Esc to close
             </text>
           </box>
@@ -128,9 +128,9 @@ export function ConfirmDelete({
     <box
       style={{
         position: "absolute",
-        left: "20%",
+        left: "30%",
         top: "30%",
-        width: "60%",
+        width: "40%",
         height: "auto",
       }}
     >
@@ -139,7 +139,7 @@ export function ConfirmDelete({
         borderStyle="rounded"
         style={{
           backgroundColor: "black",
-          padding: 2,
+          padding: 0.5,
           flexDirection: "column",
         }}
       >

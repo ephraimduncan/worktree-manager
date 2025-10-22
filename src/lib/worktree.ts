@@ -1,4 +1,5 @@
-import { basename, normalize, resolve } from "path";
+import { basename, dirname, normalize, resolve } from "path";
+import { mkdir } from "fs/promises";
 import { execGit } from "./git";
 import type { BranchInfo, GitStatus, Worktree } from "./types";
 import { MAIN_WORKTREE_DELETE_ERROR } from "./types";
@@ -67,6 +68,9 @@ export async function createWorktree(
   const { createBranch = false, baseBranch = "HEAD", cwd } = options;
 
   try {
+    const projectDir = dirname(path);
+    await mkdir(projectDir, { recursive: true });
+
     const args = ["worktree", "add"];
 
     if (createBranch) {

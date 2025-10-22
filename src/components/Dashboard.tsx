@@ -152,7 +152,6 @@ export function Dashboard() {
 					}}
 					currentRepo={currentRepo}
 					worktreesDir={config.worktreesDir}
-					defaultBranchPrefix={config.defaultBranchPrefix}
 				/>
 			)}
 

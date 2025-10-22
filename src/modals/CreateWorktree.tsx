@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useKeyboard } from "@opentui/react";
-import { basename } from "path";
+import { basename, join } from "path";
 import { createWorktree } from "../lib/worktree";
 import { isValidRef } from "../lib/git";
 import { COLORS } from "../lib/theme";
@@ -10,7 +10,6 @@ interface CreateWorktreeProps {
   onSuccess: () => void;
   currentRepo: string;
   worktreesDir: string;
-  defaultBranchPrefix: string;
 }
 
 type Status = "input" | "creating" | "error";
@@ -20,7 +19,6 @@ export function CreateWorktree({
   onSuccess,
   currentRepo,
   worktreesDir,
-  defaultBranchPrefix,
 }: CreateWorktreeProps) {
   const [status, setStatus] = useState<Status>("input");
   const [branchName, setBranchName] = useState("");
@@ -34,12 +32,8 @@ export function CreateWorktree({
     .replace(/\s+/g, "-")
     .toLowerCase();
 
-  const worktreeName = sanitizedBranch
-    ? `${projectName}-${sanitizedBranch}`
-    : "";
-
-  const worktreePath = worktreeName
-    ? `${worktreesDir}/${worktreeName}`
+  const worktreePath = sanitizedBranch
+    ? join(worktreesDir, projectName, sanitizedBranch)
     : "";
 
   const fullBranchName = branchName.trim();
@@ -119,10 +113,6 @@ export function CreateWorktree({
                 <box style={{ flexDirection: "row", marginTop: 1 }}>
                   <text fg={COLORS.label}>Branch: </text>
                   <text fg={COLORS.branch}>{fullBranchName}</text>
-                </box>
-                <box style={{ flexDirection: "row" }}>
-                  <text fg={COLORS.label}>Worktree: </text>
-                  <text fg={COLORS.text}>{worktreeName}</text>
                 </box>
                 <box style={{ flexDirection: "row" }}>
                   <text fg={COLORS.label}>Path: </text>

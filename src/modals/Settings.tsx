@@ -68,7 +68,7 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 		>
 			<box
 				title="Settings"
-				borderStyle="double"
+				borderStyle="rounded"
 				style={{
 					backgroundColor: "black",
 					padding: 2,
@@ -76,18 +76,20 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 					gap: 1,
 				}}
 			>
-				<text fg="cyan" style={{ fontWeight: "bold" }}>
+				<text fg={COLORS.label} style={{ fontWeight: "bold" }}>
 					Configuration
 				</text>
 
 				<box style={{ flexDirection: "column", marginTop: 1 }}>
 					<text
-						fg={focusedField === "projectsDir" ? COLORS.success : undefined}
+						fg={focusedField === "projectsDir" ? COLORS.highlight : COLORS.label}
 						style={{ fontWeight: "bold" }}
 					>
 						Projects Directory:
 					</text>
-					<text style={{ marginLeft: 2 }}>{editedConfig.projectsDir}</text>
+					<text fg={COLORS.dim} style={{ marginLeft: 2 }}>
+						{editedConfig.projectsDir}
+					</text>
 					{focusedField === "projectsDir" && (
 						<input
 							focused
@@ -101,12 +103,14 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 
 				<box style={{ flexDirection: "column" }}>
 					<text
-						fg={focusedField === "worktreesDir" ? COLORS.success : undefined}
+						fg={focusedField === "worktreesDir" ? COLORS.highlight : COLORS.label}
 						style={{ fontWeight: "bold" }}
 					>
 						Worktrees Directory:
 					</text>
-					<text style={{ marginLeft: 2 }}>{editedConfig.worktreesDir}</text>
+					<text fg={COLORS.dim} style={{ marginLeft: 2 }}>
+						{editedConfig.worktreesDir}
+					</text>
 					{focusedField === "worktreesDir" && (
 						<input
 							focused
@@ -122,14 +126,14 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 					<text
 						fg={
 							focusedField === "defaultBranchPrefix"
-								? COLORS.success
-								: undefined
+								? COLORS.highlight
+								: COLORS.label
 						}
 						style={{ fontWeight: "bold" }}
 					>
 						Default Branch Prefix:
 					</text>
-					<text style={{ marginLeft: 2 }}>
+					<text fg={COLORS.dim} style={{ marginLeft: 2 }}>
 						{editedConfig.defaultBranchPrefix || "(none)"}
 					</text>
 					{focusedField === "defaultBranchPrefix" && (
@@ -144,14 +148,14 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 				</box>
 
 				{isSaving ? (
-					<text fg="cyan" style={{ marginTop: 2 }}>
+					<text fg={COLORS.highlight} style={{ marginTop: 2 }}>
 						Saving...
 					</text>
 				) : (
 					<box style={{ flexDirection: "column", marginTop: 2, gap: 1 }}>
-						<text fg="cyan">[Tab] Switch field</text>
+						<text fg={COLORS.highlight}>[Tab] Switch field</text>
 						<text fg={COLORS.success}>[Ctrl+S] Save changes</text>
-						<text fg="red">[Esc] Close without saving</text>
+						<text fg={COLORS.error}>[Esc] Close without saving</text>
 					</box>
 				)}
 			</box>

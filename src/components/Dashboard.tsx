@@ -104,8 +104,10 @@ export function Dashboard() {
 					flexDirection: "column",
 				}}
 			>
-				<text fg="red">Error: {error}</text>
-				<text style={{ marginTop: 1 }}>Press 'q' to quit</text>
+				<text fg={COLORS.error}>Error: {error}</text>
+				<text fg={COLORS.dim} style={{ marginTop: 1 }}>
+					Press 'q' to quit
+				</text>
 			</box>
 		);
 	}
@@ -120,7 +122,7 @@ export function Dashboard() {
 					justifyContent: "center",
 				}}
 			>
-				<text fg="cyan">Loading worktrees...</text>
+				<text fg={COLORS.highlight}>Loading worktrees...</text>
 			</box>
 		);
 	}

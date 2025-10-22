@@ -10,13 +10,13 @@ export function DetailsPanel({ worktree }: DetailsPanelProps) {
     return (
       <box
         title="Details"
-        borderStyle="single"
+        borderStyle="rounded"
         style={{
           flexGrow: 1,
           padding: 1,
         }}
       >
-        <text>Select a worktree to view details</text>
+        <text fg={COLORS.dim}>Select a worktree to view details</text>
       </box>
     );
   }
@@ -24,7 +24,7 @@ export function DetailsPanel({ worktree }: DetailsPanelProps) {
   return (
     <box
       title="Details"
-      borderStyle="single"
+      borderStyle="rounded"
       style={{
         flexGrow: 1,
         padding: 1,
@@ -33,33 +33,37 @@ export function DetailsPanel({ worktree }: DetailsPanelProps) {
       }}
     >
       <box style={{ flexDirection: "column" }}>
-        <text fg="cyan" style={{ fontWeight: "bold" }}>
+        <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
           Name:
         </text>
-        <text style={{ marginLeft: 2 }}>{worktree.name}</text>
+        <text fg={COLORS.text} style={{ marginLeft: 2 }}>
+          {worktree.name}
+        </text>
       </box>
 
       <box style={{ flexDirection: "column" }}>
-        <text fg="cyan" style={{ fontWeight: "bold" }}>
+        <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
           Branch:
         </text>
-        <text fg={COLORS.success} style={{ marginLeft: 2 }}>
+        <text fg={COLORS.branch} style={{ marginLeft: 2 }}>
           {worktree.branch}
         </text>
       </box>
 
       <box style={{ flexDirection: "column" }}>
-        <text fg="cyan" style={{ fontWeight: "bold" }}>
+        <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
           Path:
         </text>
-        <text style={{ marginLeft: 2 }}>{worktree.path}</text>
+        <text fg={COLORS.dim} style={{ marginLeft: 2 }}>
+          {worktree.path}
+        </text>
       </box>
 
       <box style={{ flexDirection: "column" }}>
-        <text fg="cyan" style={{ fontWeight: "bold" }}>
+        <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
           HEAD:
         </text>
-        <text style={{ marginLeft: 2 }}>
+        <text fg={COLORS.commit} style={{ marginLeft: 2 }}>
           {worktree.head?.substring(0, 8) || "N/A"}
         </text>
       </box>
@@ -67,11 +71,11 @@ export function DetailsPanel({ worktree }: DetailsPanelProps) {
       {worktree.status && (
         <>
           <box style={{ flexDirection: "column", marginTop: 1 }}>
-            <text fg="cyan" style={{ fontWeight: "bold" }}>
+            <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
               Status:
             </text>
             <text
-              fg={worktree.status.isClean ? COLORS.success : "yellow"}
+              fg={worktree.status.isClean ? COLORS.success : COLORS.modified}
               style={{ marginLeft: 2 }}
             >
               {worktree.status.isClean ? "✓ Clean" : "Modified"}
@@ -83,10 +87,10 @@ export function DetailsPanel({ worktree }: DetailsPanelProps) {
               <text fg={COLORS.success} style={{ marginLeft: 2 }}>
                 Staged: {worktree.status.staged}
               </text>
-              <text fg="yellow" style={{ marginLeft: 2 }}>
+              <text fg={COLORS.modified} style={{ marginLeft: 2 }}>
                 Modified: {worktree.status.modified}
               </text>
-              <text style={{ marginLeft: 2 }}>
+              <text fg={COLORS.dim} style={{ marginLeft: 2 }}>
                 Untracked: {worktree.status.untracked}
               </text>
             </box>
@@ -94,10 +98,10 @@ export function DetailsPanel({ worktree }: DetailsPanelProps) {
 
           {(worktree.status.ahead > 0 || worktree.status.behind > 0) && (
             <box style={{ flexDirection: "column" }}>
-              <text fg="cyan" style={{ marginLeft: 2 }}>
+              <text fg={COLORS.success} style={{ marginLeft: 2 }}>
                 Ahead: {worktree.status.ahead}
               </text>
-              <text fg="red" style={{ marginLeft: 2 }}>
+              <text fg={COLORS.error} style={{ marginLeft: 2 }}>
                 Behind: {worktree.status.behind}
               </text>
             </box>
@@ -107,22 +111,24 @@ export function DetailsPanel({ worktree }: DetailsPanelProps) {
 
       {worktree.branchInfo && (
         <box style={{ flexDirection: "column", marginTop: 1 }}>
-          <text fg="cyan" style={{ fontWeight: "bold" }}>
+          <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
             Last Commit:
           </text>
-          <text style={{ marginLeft: 2 }}>
+          <text fg={COLORS.dim} style={{ marginLeft: 2 }}>
             {worktree.branchInfo.lastCommit}
           </text>
-          <text style={{ marginLeft: 2, marginTop: 0 }}>
-            {worktree.branchInfo.lastCommitTime} by{" "}
-            {worktree.branchInfo.lastCommitAuthor}
+          <text fg={COLORS.timestamp} style={{ marginLeft: 2, marginTop: 0 }}>
+            {worktree.branchInfo.lastCommitTime}{" "}
+          </text>
+          <text fg={COLORS.author} style={{ marginLeft: 2 }}>
+            by {worktree.branchInfo.lastCommitAuthor}
           </text>
         </box>
       )}
 
       {worktree.isMain && (
         <box style={{ marginTop: 1 }}>
-          <text fg="yellow">⚠ This is the main repository</text>
+          <text fg={COLORS.warning}>⚠ This is the main repository</text>
         </box>
       )}
     </box>

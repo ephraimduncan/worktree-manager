@@ -1,3 +1,5 @@
+import { COLORS } from "../lib/theme";
+
 interface Action {
   key: string;
   description: string;
@@ -20,7 +22,6 @@ export function ActionBar() {
       style={{
         height: 1,
         width: "100%",
-        backgroundColor: "black",
         paddingLeft: 1,
         paddingRight: 1,
         flexDirection: "row",
@@ -29,8 +30,8 @@ export function ActionBar() {
     >
       {ACTIONS.map((action, idx) => (
         <box key={idx} style={{ flexDirection: "row" }}>
-          <text fg="cyan">[{action.key}]</text>
-          <text> {action.description}</text>
+          <text fg={COLORS.highlight}>[{action.key}]</text>
+          <text fg={COLORS.dim}> {action.description}</text>
         </box>
       ))}
     </box>

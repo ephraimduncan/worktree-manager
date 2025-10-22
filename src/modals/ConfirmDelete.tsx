@@ -56,39 +56,45 @@ export function ConfirmDelete({
       case "confirm":
         return (
           <box style={{ flexDirection: "column", gap: 1 }}>
-            <text fg="yellow" style={{ fontWeight: "bold" }}>⚠ Delete Worktree</text>
+            <text fg={COLORS.warning} style={{ fontWeight: "bold" }}>
+              ⚠ Delete Worktree
+            </text>
 
             <box style={{ flexDirection: "column", marginTop: 1 }}>
               <box style={{ flexDirection: "row" }}>
-                <text style={{ fontWeight: "bold" }}>Name: </text>
-                <text fg="red">{worktree.name}</text>
+                <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+                  Name:{" "}
+                </text>
+                <text fg={COLORS.error}>{worktree.name}</text>
               </box>
               <box style={{ flexDirection: "row" }}>
-                <text style={{ fontWeight: "bold" }}>Branch: </text>
-                <text fg="red">{worktree.branch}</text>
+                <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+                  Branch:{" "}
+                </text>
+                <text fg={COLORS.branch}>{worktree.branch}</text>
               </box>
               <box style={{ flexDirection: "row" }}>
-                <text style={{ fontWeight: "bold" }}>Path: </text>
-                <text>{worktree.path}</text>
+                <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+                  Path:{" "}
+                </text>
+                <text fg={COLORS.dim}>{worktree.path}</text>
               </box>
             </box>
 
             {worktree.isMain && (
-              <text fg="red" style={{ marginTop: 1 }}>
+              <text fg={COLORS.error} style={{ marginTop: 1 }}>
                 ⚠ Warning: This is the main repository!
               </text>
             )}
 
             <box style={{ flexDirection: "column", marginTop: 2, gap: 1 }}>
-              <text fg={COLORS.success}>
+              <text fg={COLORS.highlight}>
                 [y] Yes, delete this worktree
               </text>
-              <text fg="cyan">
+              <text fg={COLORS.dim}>
                 [f] {useForce ? "✓" : " "} Force delete (ignore uncommitted changes)
               </text>
-              <text fg="red">
-                [Esc] Cancel
-              </text>
+              <text fg={COLORS.error}>[Esc] Cancel</text>
             </box>
           </box>
         );
@@ -96,16 +102,18 @@ export function ConfirmDelete({
       case "deleting":
         return (
           <box style={{ flexDirection: "column", alignItems: "center", gap: 1 }}>
-            <text fg="cyan">Deleting worktree...</text>
+            <text fg={COLORS.highlight}>Deleting worktree...</text>
           </box>
         );
 
       case "error":
         return (
           <box style={{ flexDirection: "column", gap: 1 }}>
-            <text fg="red" style={{ fontWeight: "bold" }}>Error</text>
+            <text fg={COLORS.error} style={{ fontWeight: "bold" }}>
+              Error
+            </text>
             <text>{error}</text>
-            <text style={{ marginTop: 1 }}>
+            <text fg={COLORS.dim} style={{ marginTop: 1 }}>
               Press Esc to close
             </text>
           </box>
@@ -128,7 +136,7 @@ export function ConfirmDelete({
     >
       <box
         title="Confirm Delete"
-        borderStyle="double"
+        borderStyle="rounded"
         style={{
           backgroundColor: "black",
           padding: 2,

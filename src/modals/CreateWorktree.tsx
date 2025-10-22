@@ -103,7 +103,9 @@ export function CreateWorktree({
       case "name":
         return (
           <box style={{ flexDirection: "column", gap: 1 }}>
-            <text fg="cyan" style={{ fontWeight: "bold" }}>Step 1: Worktree Name</text>
+            <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+              Step 1: Worktree Name
+            </text>
             <text>Enter a name for the new worktree:</text>
             <input
               focused
@@ -112,8 +114,8 @@ export function CreateWorktree({
               onSubmit={handleNameSubmit}
               style={{ marginTop: 1 }}
             />
-            {error && <text fg="red">{error}</text>}
-            <text style={{ marginTop: 1 }}>
+            {error && <text fg={COLORS.error}>{error}</text>}
+            <text fg={COLORS.dim} style={{ marginTop: 1 }}>
               Press Enter to continue, Esc to cancel
             </text>
           </box>
@@ -122,9 +124,11 @@ export function CreateWorktree({
       case "branch":
         return (
           <box style={{ flexDirection: "column", gap: 1 }}>
-            <text fg="cyan" style={{ fontWeight: "bold" }}>Step 2: Base Branch</text>
+            <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+              Step 2: Base Branch
+            </text>
             <text>Branch will be created as:</text>
-            <text fg={COLORS.success} style={{ marginLeft: 2 }}>
+            <text fg={COLORS.branch} style={{ marginLeft: 2 }}>
               {formData.branchName}
             </text>
             <text style={{ marginTop: 1 }}>
@@ -137,7 +141,7 @@ export function CreateWorktree({
               onSubmit={handleBranchSubmit}
               style={{ marginTop: 1 }}
             />
-            <text style={{ marginTop: 1 }}>
+            <text fg={COLORS.dim} style={{ marginTop: 1 }}>
               Press Enter to continue, Esc to cancel
             </text>
           </box>
@@ -146,31 +150,43 @@ export function CreateWorktree({
       case "confirm":
         return (
           <box style={{ flexDirection: "column", gap: 1 }}>
-            <text fg="cyan" style={{ fontWeight: "bold" }}>Confirm Creation</text>
+            <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+              Confirm Creation
+            </text>
 
             <box style={{ flexDirection: "column", marginTop: 1 }}>
               <box style={{ flexDirection: "row" }}>
-                <text style={{ fontWeight: "bold" }}>Worktree: </text>
-                <text fg={COLORS.success}>{formData.name}</text>
+                <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+                  Worktree:{" "}
+                </text>
+                <text fg={COLORS.text}>{formData.name}</text>
               </box>
               <box style={{ flexDirection: "row" }}>
-                <text style={{ fontWeight: "bold" }}>Branch: </text>
-                <text fg={COLORS.success}>{formData.branchName}</text>
+                <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+                  Branch:{" "}
+                </text>
+                <text fg={COLORS.branch}>{formData.branchName}</text>
               </box>
               <box style={{ flexDirection: "row" }}>
-                <text style={{ fontWeight: "bold" }}>Base: </text>
-                <text>{formData.baseBranch}</text>
+                <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+                  Base:{" "}
+                </text>
+                <text fg={COLORS.dim}>{formData.baseBranch}</text>
               </box>
               <box style={{ flexDirection: "row" }}>
-                <text style={{ fontWeight: "bold" }}>Path: </text>
-                <text>{worktreesDir}/{formData.name}</text>
+                <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
+                  Path:{" "}
+                </text>
+                <text fg={COLORS.dim}>
+                  {worktreesDir}/{formData.name}
+                </text>
               </box>
             </box>
 
             <box style={{ flexDirection: "row", gap: 2, marginTop: 2 }}>
               <text fg={COLORS.success}>Press Enter to create</text>
-              <text>|</text>
-              <text fg="red">Press Esc to cancel</text>
+              <text fg={COLORS.dim}>|</text>
+              <text fg={COLORS.error}>Press Esc to cancel</text>
             </box>
           </box>
         );
@@ -178,16 +194,18 @@ export function CreateWorktree({
       case "creating":
         return (
           <box style={{ flexDirection: "column", alignItems: "center", gap: 1 }}>
-            <text fg="cyan">Creating worktree...</text>
+            <text fg={COLORS.highlight}>Creating worktree...</text>
           </box>
         );
 
       case "error":
         return (
           <box style={{ flexDirection: "column", gap: 1 }}>
-            <text fg="red" style={{ fontWeight: "bold" }}>Error</text>
+            <text fg={COLORS.error} style={{ fontWeight: "bold" }}>
+              Error
+            </text>
             <text>{error}</text>
-            <text style={{ marginTop: 1 }}>
+            <text fg={COLORS.dim} style={{ marginTop: 1 }}>
               Press Esc to close
             </text>
           </box>
@@ -216,7 +234,7 @@ export function CreateWorktree({
     >
       <box
         title="Create Worktree"
-        borderStyle="double"
+        borderStyle="rounded"
         style={{
           backgroundColor: "black",
           padding: 2,

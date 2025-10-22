@@ -23,13 +23,13 @@ export function WorktreeList({ worktrees, selectedIndex }: WorktreeListProps) {
     return (
       <box
         title="Worktrees"
-        borderStyle="single"
+        borderStyle="rounded"
         style={{
           flexGrow: 1,
           padding: 1,
         }}
       >
-        <text>No worktrees found</text>
+        <text fg={COLORS.dim}>No worktrees found</text>
       </box>
     );
   }
@@ -37,7 +37,7 @@ export function WorktreeList({ worktrees, selectedIndex }: WorktreeListProps) {
   return (
     <box
       title={`Worktrees (${worktrees.length})`}
-      borderStyle="single"
+      borderStyle="rounded"
       style={{
         flexGrow: 1,
         padding: 1,
@@ -47,8 +47,8 @@ export function WorktreeList({ worktrees, selectedIndex }: WorktreeListProps) {
       {worktrees.map((wt, idx) => {
         const isSelected = idx === selectedIndex;
         const prefix = isSelected ? "▶ " : "  ";
-        const nameColor = isSelected ? "cyan" : undefined;
-        const branchColor = COLORS.success;
+        const nameColor = isSelected ? COLORS.highlight : COLORS.text;
+        const branchColor = COLORS.branch;
 
         let statusIndicator = "";
         let statusColor: string | undefined;
@@ -60,18 +60,18 @@ export function WorktreeList({ worktrees, selectedIndex }: WorktreeListProps) {
             const totalChanges =
               wt.status.staged + wt.status.modified + wt.status.untracked;
             statusIndicator = ` ~${totalChanges}`;
-            statusColor = "yellow";
+            statusColor = COLORS.modified;
           }
         }
 
         return (
           <box key={wt.path} style={{ flexDirection: "row", marginBottom: 0 }}>
-            <text>{prefix}</text>
+            <text fg={isSelected ? COLORS.highlight : COLORS.dim}>{prefix}</text>
             <text fg={nameColor} style={{ fontWeight: "bold" }}>
               {truncateAndPad(wt.name, 20)}
             </text>
             <text fg={branchColor}> ({truncate(wt.branch, 25)})</text>
-            {wt.isMain && <text> [main]</text>}
+            {wt.isMain && <text fg={COLORS.dim}> [main]</text>}
             {statusIndicator && <text fg={statusColor}>{statusIndicator}</text>}
           </box>
         );

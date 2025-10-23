@@ -4,6 +4,8 @@ A beautiful TUI (Terminal User Interface) for managing git worktrees - like lazy
 
 Built with [OpenTUI](https://github.com/sst/opentui) and [Bun](https://bun.sh).
 
+![Screenshot](./assets/screenshot.png)
+
 ## Features
 
 - **Dashboard Layout**: Clean, lazygit-inspired interface with worktree list, details panel, and action bar

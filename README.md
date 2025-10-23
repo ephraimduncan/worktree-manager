@@ -115,49 +115,6 @@ bun run build          # Build to dist/
 bun run build:binary   # Compile standalone binary
 ```
 
-## Project Structure
-
-```
-src/
-├── index.tsx              # Entry point
-├── components/
-│   ├── Dashboard.tsx      # Main layout
-│   ├── WorktreeList.tsx   # Worktree list panel
-│   ├── DetailsPanel.tsx   # Details panel
-│   ├── StatusBar.tsx      # Top status bar
-│   └── ActionBar.tsx      # Bottom action bar
-├── modals/
-│   ├── CreateWorktree.tsx # Creation wizard
-│   ├── ConfirmDelete.tsx  # Delete confirmation
-│   ├── ConfirmClean.tsx   # Clean confirmation
-│   ├── Settings.tsx       # Settings editor
-│   └── Help.tsx           # Help modal
-├── lib/
-│   ├── git.ts            # Git command utilities
-│   ├── worktree.ts       # Worktree operations
-│   ├── config.ts         # Config management
-│   └── types.ts          # TypeScript types
-└── hooks/
-    └── useWorktrees.ts   # Worktree state hook
-```
-
-## Why Worktree Manager?
-
-Git worktrees are powerful but can be cumbersome to manage with CLI commands. This TUI provides:
-
-- Visual overview of all worktrees
-- Quick creation with branch management
-- Git status at a glance
-- Safe deletion with confirmations
-- Configuration management
-
-Perfect for developers who:
-
-- Work on multiple features simultaneously
-- Need to switch contexts frequently
-- Want a visual interface for worktree management
-- Love terminal UIs like lazygit
-
 ## License
 
 MIT

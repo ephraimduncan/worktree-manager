@@ -1,17 +1,21 @@
 {
-  "name": "worktree-manager",
+  "name": "worktrees",
   "version": "0.1.0",
   "description": "A beautiful TUI for managing git worktrees - like lazygit, but for worktrees",
   "module": "src/index.tsx",
   "type": "module",
   "bin": {
-    "worktree-manager": "./dist/index.js",
-    "wt-manager": "./dist/index.js"
+    "worktrees": "./dist/index.js",
+    "wt": "./dist/index.js",
+    "wtm": "./dist/index.js"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "bun run src/index.tsx",
-    "build": "bun build src/index.tsx --outdir dist --target bun",
-    "build:binary": "bun build src/index.tsx --compile --outfile worktree-manager",
+    "build": "bun build src/index.tsx --outdir dist --target bun && echo '#!/usr/bin/env bun' | cat - dist/index.js > dist/index.tmp && mv dist/index.tmp dist/index.js && chmod +x dist/index.js",
+    "build:binary": "bun build src/index.tsx --compile --outfile worktrees",
     "start": "bun run src/index.tsx"
   },
   "keywords": [
@@ -23,11 +27,11 @@
     "lazygit",
     "opentui"
   ],
-  "author": "",
+  "author": "ephraimduncan",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/worktree-manager"
+    "url": "https://github.com/ephraimduncan/worktrees"
   },
   "devDependencies": {
     "@types/bun": "latest"

@@ -1,4 +1,4 @@
-# Worktree Manager
+# Git Worktrees Manager
 
 A beautiful TUI (Terminal User Interface) for managing git worktrees - like lazygit, but for worktrees.
 
@@ -18,28 +18,30 @@ Built with [OpenTUI](https://github.com/sst/opentui) and [Bun](https://bun.sh).
 ### Global Install (npm)
 
 ```bash
-npm install -g worktree-manager
+npm install -g worktrees
 ```
 
 Then run with:
 
 ```bash
-worktree-manager
+worktrees
 # or
-wt-manager
+wt
 ```
 
-### Using bunx (no install)
+### Using npx/bunx (no install)
 
 ```bash
-bunx worktree-manager
+npx worktrees
+# or
+bunx worktrees
 ```
 
 ### From Source
 
 ```bash
-git clone <your-repo>
-cd worktrees-manager
+git clone https://github.com/ephraimduncan/worktrees.git
+cd worktrees
 bun install
 bun run dev
 ```
@@ -52,23 +54,25 @@ Build a standalone executable:
 bun run build:binary
 ```
 
-This creates a `worktree-manager` binary you can move to your PATH.
+This creates a `worktrees` binary you can move to your PATH.
 
 ## Usage
 
 Run the TUI from within any git repository:
 
 ```bash
-worktree-manager
+worktrees
 ```
 
 ### Keyboard Shortcuts
 
 **Navigation:**
+
 - `↑/↓` or `j/k` - Move selection up/down
 - `Enter` - Print selected worktree path and exit
 
 **Actions:**
+
 - `c` - Create new worktree (interactive wizard)
 - `d` - Delete selected worktree
 - `D` - Clean all worktrees (except main)
@@ -76,12 +80,13 @@ worktree-manager
 - `s` - Open settings
 
 **Other:**
+
 - `?` - Show help
 - `q` or `Esc` - Quit application
 
 ## Configuration
 
-Configuration is stored in `~/.worktree-manager`:
+Configuration is stored in `~/.worktrees`:
 
 ```json
 {
@@ -147,6 +152,7 @@ Git worktrees are powerful but can be cumbersome to manage with CLI commands. Th
 - Configuration management
 
 Perfect for developers who:
+
 - Work on multiple features simultaneously
 - Need to switch contexts frequently
 - Want a visual interface for worktree management

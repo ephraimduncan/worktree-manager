@@ -2,7 +2,7 @@ import { homedir } from "os";
 import { join } from "path";
 import type { Config } from "./types";
 
-const CONFIG_FILE = join(homedir(), ".worktree-manager");
+const CONFIG_FILE = join(homedir(), ".worktrees");
 
 const DEFAULT_CONFIG: Config = {
   projectsDir: join(homedir(), "projects"),

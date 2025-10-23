@@ -5,15 +5,15 @@ import { loadConfig } from "../lib/config";
 import { COLORS } from "../lib/theme";
 import type { Config, ModalType } from "../lib/types";
 import { MAIN_WORKTREE_DELETE_ERROR } from "../lib/types";
-import { ConfirmClean } from "../modals/ConfirmClean";
-import { ConfirmDelete } from "../modals/ConfirmDelete";
-import { CreateWorktree } from "../modals/CreateWorktree";
-import { Help } from "../modals/Help";
-import { Settings } from "../modals/Settings";
-import { ActionBar } from "./ActionBar";
-import { DetailsPanel } from "./DetailsPanel";
-import { StatusBar } from "./StatusBar";
-import { WorktreeList } from "./WorktreeList";
+import { ConfirmClean } from "../modals/confirm-clean";
+import { ConfirmDelete } from "../modals/confirm-delete";
+import { CreateWorktree } from "../modals/create-worktree";
+import { Help } from "../modals/help";
+import { Settings } from "../modals/settings";
+import { ActionBar } from "./action-bar";
+import { DetailsPanel } from "./details-panel";
+import { StatusBar } from "./status-bar";
+import { WorktreeList } from "./worktree-list";
 
 export function Dashboard() {
 	const { worktrees, isLoading, error, currentRepo, refresh } = useWorktrees();

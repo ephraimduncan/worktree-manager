@@ -10,11 +10,11 @@ interface SettingsProps {
 	onSave: (config: Config) => void;
 }
 
-type Field = "projectsDir" | "worktreesDir" | "defaultBranchPrefix";
+type Field = "worktreesDir" | "defaultBranchPrefix";
 
 export function Settings({ config, onClose, onSave }: SettingsProps) {
 	const [editedConfig, setEditedConfig] = useState<Config>(config);
-	const [focusedField, setFocusedField] = useState<Field>("projectsDir");
+	const [focusedField, setFocusedField] = useState<Field>("worktreesDir");
 	const [inputValue, setInputValue] = useState("");
 	const [isSaving, setIsSaving] = useState(false);
 
@@ -23,7 +23,6 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 			onClose();
 		} else if (key.name === "tab") {
 			const fields: Field[] = [
-				"projectsDir",
 				"worktreesDir",
 				"defaultBranchPrefix",
 			];
@@ -81,27 +80,6 @@ export function Settings({ config, onClose, onSave }: SettingsProps) {
 				</text>
 
 				<box style={{ flexDirection: "column", marginTop: 0.5 }}>
-					<text
-						fg={focusedField === "projectsDir" ? COLORS.highlight : COLORS.label}
-						style={{ fontWeight: "bold" }}
-					>
-						Projects Directory:
-					</text>
-					<text fg={COLORS.dim} style={{ marginLeft: 2 }}>
-						{editedConfig.projectsDir}
-					</text>
-					{focusedField === "projectsDir" && (
-						<input
-							focused
-							placeholder="Enter new path..."
-							onInput={setInputValue}
-							onSubmit={() => handleFieldSubmit("projectsDir")}
-							style={{ marginTop: 0.5 }}
-						/>
-					)}
-				</box>
-
-				<box style={{ flexDirection: "column" }}>
 					<text
 						fg={focusedField === "worktreesDir" ? COLORS.highlight : COLORS.label}
 						style={{ fontWeight: "bold" }}

@@ -1,5 +1,4 @@
 export interface Config {
-  projectsDir: string;
   worktreesDir: string;
   defaultBranchPrefix: string;
   autoRefresh: boolean;

@@ -5,8 +5,7 @@ import type { Config } from "./types";
 const CONFIG_FILE = join(homedir(), ".worktrees");
 
 const DEFAULT_CONFIG: Config = {
-  projectsDir: join(homedir(), "projects"),
-  worktreesDir: join(homedir(), "projects", "worktrees"),
+  worktreesDir: join(homedir(), ".worktrees"),
   defaultBranchPrefix: "",
   autoRefresh: true,
   refreshInterval: 5000,

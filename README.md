@@ -92,8 +92,7 @@ Configuration is stored in `~/.worktrees`:
 
 ```json
 {
-  "projectsDir": "/Users/you/projects",
-  "worktreesDir": "/Users/you/projects/worktrees",
+  "worktreesDir": "/Users/you/.worktrees",
   "defaultBranchPrefix": "",
   "autoRefresh": true,
   "refreshInterval": 5000

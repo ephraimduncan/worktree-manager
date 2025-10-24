@@ -2,7 +2,10 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(bun add -d @biomejs/biome lefthook)",
+      "Bash(test -f lefthook.yml)",
+      "Bash(bunx lefthook install)"
     ],
     "deny": [],
     "ask": []

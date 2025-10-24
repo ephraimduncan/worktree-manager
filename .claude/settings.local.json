@@ -1,12 +1,15 @@
 {
-  "permissions": {
-    "allow": [
-      "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)",
+	"permissions": {
+		"allow": [
+			"WebFetch(domain:github.com)",
+			"WebFetch(domain:raw.githubusercontent.com)",
+			"Bash(bun add -d @biomejs/biome lefthook)",
+			"Bash(test -f lefthook.yml)",
+			"Bash(bunx lefthook install)",
       "SlashCommand(/feature-dev:feature-dev:*)",
       "Bash(bun build src/index.tsx --outdir dist --target bun)"
-    ],
-    "deny": [],
-    "ask": []
-  }
+		],
+		"deny": [],
+		"ask": []
+	}
 }

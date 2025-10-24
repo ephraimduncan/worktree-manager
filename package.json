@@ -1,50 +1,57 @@
 {
-  "name": "worktrees",
-  "version": "0.1.1",
-  "description": "A beautiful TUI for managing git worktrees - like lazygit, but for worktrees",
-  "module": "src/index.tsx",
-  "type": "module",
-  "bin": {
-    "worktrees": "./dist/index.js",
-    "wt": "./dist/index.js",
-    "wtm": "./dist/index.js"
-  },
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "dev": "bun run src/index.tsx",
-    "build": "bun build src/index.tsx --outdir dist --target bun && echo '#!/usr/bin/env bun' | cat - dist/index.js > dist/index.tmp && mv dist/index.tmp dist/index.js && chmod +x dist/index.js",
-    "build:binary": "bun build src/index.tsx --compile --outfile worktrees",
-    "start": "bun run src/index.tsx"
-  },
-  "keywords": [
-    "git",
-    "worktree",
-    "tui",
-    "terminal",
-    "cli",
-    "lazygit",
-    "opentui"
-  ],
-  "author": "ephraimduncan",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ephraimduncan/worktrees"
-  },
-  "devDependencies": {
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "dependencies": {
-    "@opentui/core": "^0.1.27",
-    "@opentui/react": "^0.1.27",
-    "react": "^19.1.1"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  }
+	"name": "worktrees",
+	"version": "0.1.1",
+	"description": "A beautiful TUI for managing git worktrees - like lazygit, but for worktrees",
+	"module": "src/index.tsx",
+	"type": "module",
+	"bin": {
+		"worktrees": "./dist/index.js",
+		"wt": "./dist/index.js",
+		"wtm": "./dist/index.js"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"dev": "bun run src/index.tsx",
+		"build": "bun build src/index.tsx --outdir dist --target bun && echo '#!/usr/bin/env bun' | cat - dist/index.js > dist/index.tmp && mv dist/index.tmp dist/index.js && chmod +x dist/index.js",
+		"build:binary": "bun build src/index.tsx --compile --outfile worktrees",
+		"start": "bun run src/index.tsx",
+		"lint": "biome check .",
+		"lint:fix": "biome check --write .",
+		"format": "biome format --write .",
+		"typecheck": "bun tsc --noEmit",
+		"postinstall": "lefthook install"
+	},
+	"keywords": [
+		"git",
+		"worktree",
+		"tui",
+		"terminal",
+		"cli",
+		"lazygit",
+		"opentui"
+	],
+	"author": "ephraimduncan",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ephraimduncan/worktrees"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.7",
+		"@types/bun": "latest",
+		"lefthook": "^2.0.0"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"@opentui/core": "^0.1.27",
+		"@opentui/react": "^0.1.27",
+		"react": "^19.1.1"
+	},
+	"engines": {
+		"node": ">=18.0.0"
+	}
 }

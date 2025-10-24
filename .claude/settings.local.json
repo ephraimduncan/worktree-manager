@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)"
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "SlashCommand(/feature-dev:feature-dev:*)",
+      "Bash(bun build src/index.tsx --outdir dist --target bun)"
     ],
     "deny": [],
     "ask": []

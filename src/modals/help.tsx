@@ -32,8 +32,8 @@ export function Help({ onClose }: HelpProps) {
           gap: 0.5,
         }}
       >
-        <text fg={COLORS.label} style={{ fontWeight: "bold" }}>
-          Navigation
+        <text fg={COLORS.label}>
+          <strong>Navigation</strong>
         </text>
         <box style={{ flexDirection: "row", marginLeft: 2 }}>
           <text fg={COLORS.highlight}>↑/↓</text>
@@ -46,8 +46,8 @@ export function Help({ onClose }: HelpProps) {
           <text> - Print selected worktree path and exit</text>
         </box>
 
-        <text fg={COLORS.label} style={{ fontWeight: "bold", marginTop: 0.5 }}>
-          Actions
+        <text fg={COLORS.label} style={{ marginTop: 0.5 }}>
+          <strong>Actions</strong>
         </text>
         <box style={{ flexDirection: "row", marginLeft: 2 }}>
           <text fg={COLORS.highlight}>c</text>
@@ -66,8 +66,8 @@ export function Help({ onClose }: HelpProps) {
           <text> - Refresh worktree list</text>
         </box>
 
-        <text fg={COLORS.label} style={{ fontWeight: "bold", marginTop: 0.5 }}>
-          Other
+        <text fg={COLORS.label} style={{ marginTop: 0.5 }}>
+          <strong>Other</strong>
         </text>
         <box style={{ flexDirection: "row", marginLeft: 2 }}>
           <text fg={COLORS.highlight}>?</text>

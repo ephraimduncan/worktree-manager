@@ -1,7 +1,8 @@
-import { useKeyboard } from "@opentui/react";
+import { useKeyboard, useTerminalDimensions } from "@opentui/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useWorktrees } from "../hooks/useWorktrees";
 import { loadConfig } from "../lib/config";
+import { getLayoutFlags, BREAKPOINTS } from "../lib/responsive";
 import { COLORS } from "../lib/theme";
 import type { Config, ModalType } from "../lib/types";
 import { MAIN_WORKTREE_DELETE_ERROR } from "../lib/types";
@@ -24,6 +25,10 @@ export function Dashboard() {
 	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
 	const selectedWorktree = worktrees[selectedIndex] || null;
+	const { width: terminalWidth } = useTerminalDimensions();
+
+	const { isStackedLayout, isCompact, isUltraCompact } = getLayoutFlags(terminalWidth);
+	const mainAreaPadding = isUltraCompact ? 0 : isCompact ? 0.5 : 1;
 
 	const showNotification = useCallback((message: string, duration = 1500) => {
 		if (timeoutRef.current) {
@@ -129,19 +134,46 @@ export function Dashboard() {
 
 	return (
 		<box style={{ width: "100%", height: "100%", flexDirection: "column" }}>
-			<StatusBar repoPath={currentRepo} worktreeCount={worktrees.length} />
+			<StatusBar
+				repoPath={currentRepo}
+				worktreeCount={worktrees.length}
+				terminalWidth={terminalWidth}
+			/>
 
-			<box style={{ flexGrow: 1, flexDirection: "row", padding: 1, gap: 1 }}>
-				<box style={{ width: "40%", flexDirection: "column" }}>
-					<WorktreeList worktrees={worktrees} selectedIndex={selectedIndex} />
+			<box
+				style={{
+					flexGrow: 1,
+					flexDirection: isStackedLayout ? "column" : "row",
+					padding: mainAreaPadding,
+					gap: 1,
+				}}
+			>
+				<box
+					style={{
+						width: isStackedLayout ? "100%" : "45%",
+						flexDirection: "column",
+					}}
+				>
+					<WorktreeList
+						worktrees={worktrees}
+						selectedIndex={selectedIndex}
+						terminalWidth={terminalWidth}
+						stacked={isStackedLayout}
+						compact={isCompact}
+					/>
 				</box>
 
-				<box style={{ width: "60%", flexDirection: "column" }}>
-					<DetailsPanel worktree={selectedWorktree} />
+				<box
+					style={{
+						width: isStackedLayout ? "100%" : "55%",
+						flexDirection: "column",
+					}}
+				>
+					<DetailsPanel worktree={selectedWorktree} terminalWidth={terminalWidth} />
 				</box>
 			</box>
 
-			<ActionBar />
+			<ActionBar terminalWidth={terminalWidth} />
 
 			{modal === "create" && config && currentRepo && (
 				<CreateWorktree
